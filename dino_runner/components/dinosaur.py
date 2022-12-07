@@ -13,6 +13,7 @@ class Dinosaur(Sprite):
         self.dino_jump = {DEFAULT_TYPE: JUMPING}
 
         self.image = self.dino_run[DEFAULT_TYPE][0]
+        self.type = DEFAULT_TYPE
         self.dino_rect = self.image.get_rect()
         self.dino_rect.x = self.X_POS
         self.dino_rect.y = self.Y_POS
@@ -20,6 +21,7 @@ class Dinosaur(Sprite):
         self.running = True
         self.ducking = False 
         self.jumping = False
+        self.jump_vel = self.JUMP_VEL
     def run(self):
         self.image = self.dino_run[DEFAULT_TYPE][0] if self.steps <=5 else self.dino_run[DEFAULT_TYPE][1]
         self.dino_rect = self.image.get_rect()
@@ -33,7 +35,14 @@ class Dinosaur(Sprite):
         self.dino_rect.y = self.Y_POS +30
         self.steps +=1
     def jump(self):
-        pass
+        self.image = JUMPING
+        if self.jumping:
+            self.dino_rect.y -= self.jump_vel *4
+            self.jump_vel -=0.8
+        if self.jump_vel < -self.JUMP_VEL:
+            self.dino_rect.y = self.Y_POS
+            self.jumping = False
+            self.jump_vel = self.JUMP_VEL
     def update(self, input_user):
         if self.running:
             self.run()
