@@ -5,7 +5,7 @@ from dino_runner.utils.constants import (LARGE_CACTUS, SMALL_CACTUS)
 class ObstacleManager():
     def __init__(self):
         self.obstacles = []
-
+    #agregar el obstaculo bird y mejora del large cactus
     def update(self, game):
         if len(self.obstacles)==0:
             cactus_size = random.randint(0,1)
