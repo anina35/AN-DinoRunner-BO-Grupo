@@ -22,6 +22,8 @@ class Dinosaur(Sprite):
         self.ducking = False 
         self.jumping = False
         self.jump_vel = self.JUMP_VEL
+
+        self.has_lives=True
     def run(self):
         self.image = self.dino_run[DEFAULT_TYPE][0] if self.steps <=5 else self.dino_run[DEFAULT_TYPE][1]
         self.dino_rect = self.image.get_rect()
