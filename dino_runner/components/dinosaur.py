@@ -69,3 +69,4 @@ class Dinosaur(Sprite):
             self.steps =0
     def draw(self, screen):
         screen.blit(self.image, (self.dino_rect.x, self.dino_rect.y))
+        

@@ -37,7 +37,7 @@ class Game:
             self.events()
             self.update()
             self.draw()
-        pygame.quit()
+        #pygame.quit()
 
     def events(self):
         for event in pygame.event.get():
@@ -75,24 +75,24 @@ class Game:
         half_screen_height = SCREEN_HEIGHT//2
         half_screen_width = SCREEN_WIDTH//2
         if self.death_count ==0:
-            text, text_rext = text_utils.get_centered_message('Press any key to start again')
-            self.screen.blit(text, text_rext)
-        elif self. death_count > 0:
+            text, text_rect = text_utils.get_centered_message('Press any key to start')
+            self.screen.blit(text, text_rect)
+        elif self.death_count > 0:
             text, text_rect = text_utils.get_centered_message('Press any key to restart')
             score, score_rect = text_utils.get_centered_message('Your score is: ' + str(self.points), height=half_screen_height+50)
             death, death_rect = text_utils.get_centered_message('Death count: '+ str(self.death_count), height=half_screen_height+100)
             self.screen.blit(score, score_rect)
             self.screen.blit(text, text_rect)
             self.screen.blit(death, death_rect)
-        self.screen.blit(RUNNING[0], (half_screen_height- 20, half_screen_width- 20))
+        #self.screen.blit(RUNNING[0], (half_screen_height- 20, half_screen_width- 20))
 
     def handle_key_events_on_menu(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.playing=False
                 self.running=False
-                pygame.display.quit()
-                pygame.quit()
+                #pygame.display.quit()
+                #pygame.quit()
             if event.type == pygame.KEYDOWN:
                 self.run()
 
