@@ -61,6 +61,8 @@ class Dinosaur(Sprite):
             self.jumping =True
             self.ducking=False
             self.running=False
+            pygame.mixer.music.load('dino_runner/aud1.wav')
+            pygame.mixer.music.play()
         elif not self.jumping:
             self.running= True
             self.jumping=False
