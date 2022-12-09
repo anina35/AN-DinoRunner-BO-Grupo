@@ -11,9 +11,9 @@ class Dinosaur(Sprite):
         self.run_img = {DEFAULT_TYPE: RUNNING, SHIELD_TYPE: RUNNING_SHIELD}
         self.duck_img = {DEFAULT_TYPE: DUCKING, SHIELD_TYPE: DUCKING_SHIELD}
         self.jump_img = {DEFAULT_TYPE: JUMPING, SHIELD_TYPE: JUMPING_SHIELD}
-
+        self.type = DEFAULT_TYPE
         self.image = self.run_img[DEFAULT_TYPE][0]
-        #self.type = DEFAULT_TYPE
+        
         self.dino_rect = self.image.get_rect()
         self.dino_rect.x = self.X_POS
         self.dino_rect.y = self.Y_POS
@@ -31,23 +31,23 @@ class Dinosaur(Sprite):
         self.has_powerup = False
         self.shield = False
         self.show_text = False
-        self.shield_time_up =0
+        self.shield_time_up = 0
 
 
     def run(self):
-        self.image = self.run_img[DEFAULT_TYPE][0] if self.steps <=5 else self.run_img[DEFAULT_TYPE][1]
+        self.image = self.run_img[self.type][self.steps//5]
         self.dino_rect = self.image.get_rect()
         self.dino_rect.x = self.X_POS
         self.dino_rect.y = self.Y_POS
         self.steps +=1
     def duck(self):
-        self.image = self.duck_img[DEFAULT_TYPE][0] if self.steps <=5 else self.duck_img[DEFAULT_TYPE][1]
+        self.image = self.duck_img[self.type][self.steps//5]
         self.dino_rect = self.image.get_rect()
         self.dino_rect.x = self.X_POS
         self.dino_rect.y = self.Y_POS +30
         self.steps +=1
     def jump(self):
-        self.image = JUMPING
+        self.image = self.jump_img[self.type]
         if self.jumping:
             self.dino_rect.y -= self.jump_vel *4
             self.jump_vel -=0.8

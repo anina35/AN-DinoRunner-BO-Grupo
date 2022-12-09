@@ -33,11 +33,13 @@ class Game:
 
     def run(self):
         # Game loop: events - update - draw
-        #self.points =0
+        
 
         self.obstacle_manager = ObstacleManager()
         self.player_heart_manager = PlayerHeartManager()
         self.power_up_manager.reset_power_ups(self.points)
+        self.points =0
+        self.game_speed=20
         self.playing = True
         while self.playing:
             self.events()
