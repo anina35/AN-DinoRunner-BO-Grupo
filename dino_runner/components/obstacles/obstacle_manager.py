@@ -2,7 +2,7 @@ import random
 import pygame
 from dino_runner.components.obstacles.bird import Bird
 from dino_runner.components.obstacles.cactus import Cactus
-from dino_runner.utils.constants import (BIRD, LARGE_CACTUS, SMALL_CACTUS)
+from dino_runner.utils.constants import (BIRD, CLOUD, LARGE_CACTUS, SMALL_CACTUS)
 class ObstacleManager():
     def __init__(self):
         self.obstacles = []

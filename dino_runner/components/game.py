@@ -1,4 +1,5 @@
 import pygame
+from dino_runner.components.cloud import Cloud
 from dino_runner.components.obstacles.obstacle_manager import ObstacleManager
 from dino_runner.components.player_hearts.player_heart_manager import PlayerHeartManager
 from dino_runner.components.power_ups.power_up_manager import PowerUpManager
@@ -18,6 +19,7 @@ class Game:
         self.obstacle_manager = ObstacleManager()
         self.player_heart_manager = PlayerHeartManager()
         self.power_up_manager = PowerUpManager()
+        self.cloud = Cloud()
         self.playing = False
         self.game_speed = 20
         self.x_pos_bg = 0
@@ -57,9 +59,10 @@ class Game:
         self.dino.update(input_user)
         self.obstacle_manager.update(self)
         self.power_up_manager.update(self.points, self.game_speed, self.dino)
+        self.cloud.update(self.game_speed)
 
     def draw(self):
-        self.screen.fill(WHITE_COLOR)
+        self.screen.fill((255,164,100))
         
         self.clock.tick(FPS)
         self.score()
@@ -68,6 +71,7 @@ class Game:
         self.obstacle_manager.draw(self.screen)
         self.player_heart_manager.draw(self.screen)
         self.power_up_manager.draw(self.screen)
+        self.cloud.draw(self.screen)
 
         pygame.display.update()
         pygame.display.flip()
@@ -95,7 +99,7 @@ class Game:
             self.screen.blit(score, score_rect)
             self.screen.blit(text, text_rect)
             self.screen.blit(death, death_rect)
-        #self.screen.blit(RUNNING[0], (half_screen_height- 20, half_screen_width- 20))
+        self.screen.blit(RUNNING[0], (half_screen_height +200, half_screen_width -360))
 
     def handle_key_events_on_menu(self):
         for event in pygame.event.get():
