@@ -69,6 +69,9 @@ BG = pygame.image.load(os.path.join(IMG_DIR, 'Other/Track.png'))
 
 HEART = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
 
+RESET = pygame.image.load(os.path.join(IMG_DIR, 'Other/Reset.png'))
+GAME_OVER = pygame.image.load(os.path.join(IMG_DIR, 'Other/GameOver.png'))
+
 DEFAULT_TYPE = "default"
 HEART_COUNT = 5
 FONT_STYLE = 'freesansbold.ttf'

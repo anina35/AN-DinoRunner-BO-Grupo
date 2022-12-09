@@ -4,7 +4,7 @@ from dino_runner.components.obstacles.obstacle_manager import ObstacleManager
 from dino_runner.components.player_hearts.player_heart_manager import PlayerHeartManager
 from dino_runner.components.power_ups.power_up_manager import PowerUpManager
 
-from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, WHITE_COLOR, RUNNING
+from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, WHITE_COLOR, RUNNING, RESET, GAME_OVER
 from dino_runner.components.dinosaur import Dinosaur
 from dino_runner.components import text_utils
 
@@ -62,7 +62,7 @@ class Game:
         self.cloud.update(self.game_speed)
 
     def draw(self):
-        self.screen.fill((255,164,100))
+        self.screen.fill((199,147,22))
         
         self.clock.tick(FPS)
         self.score()
@@ -96,10 +96,12 @@ class Game:
             text, text_rect = text_utils.get_centered_message('Press any key to restart')
             score, score_rect = text_utils.get_centered_message('Your score is: ' + str(self.points), height=half_screen_height+50)
             death, death_rect = text_utils.get_centered_message('Death count: '+ str(self.death_count), height=half_screen_height+100)
+            self.screen.blit(GAME_OVER, (half_screen_height +65, half_screen_width-400))
             self.screen.blit(score, score_rect)
             self.screen.blit(text, text_rect)
             self.screen.blit(death, death_rect)
-        self.screen.blit(RUNNING[0], (half_screen_height +200, half_screen_width -360))
+            self.screen.blit(RESET, (half_screen_height +220, half_screen_width-100))
+        self.screen.blit(ICON, (half_screen_height +220, half_screen_width -360))
 
     def handle_key_events_on_menu(self):
         for event in pygame.event.get():
